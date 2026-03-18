@@ -6,7 +6,7 @@ Shared TypeScript types, constants, and utility functions used by both the Famil
 ## Package Design
 - **No build step.** `"main": "src/index.ts"` points to raw TypeScript. Both Next.js (`transpilePackages`) and Metro (native TS support) transpile it directly.
 - **Zero dependencies.** Only `devDependencies` for TypeScript. The `cn()` function (needs `clsx` + `tailwind-merge`) stays web-only.
-- **`file:` dependency.** Both apps reference via `"@family-planner/shared": "file:../family-planner-shared"` — symlink, instant changes.
+- **`github:` dependency.** Both apps reference via `"@family-planner/shared": "github:ethancstuart/family-planner-shared"` — works both locally and in CI/Vercel/EAS. After editing the shared package, push to GitHub and run `npm install` in consumer apps to pick up changes.
 
 ## Exports
 - `src/types.ts` — All shared TypeScript interfaces (Household, Recipe, MealPlan, GroceryList, etc.)
